@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "822693408322",
+    "firebase_url": "https://capstone-a0fb0.firebaseio.com",
+    "project_id": "capstone-a0fb0",
+    "storage_bucket": "capstone-a0fb0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822693408322:android:7f854f54747ae68b",
+        "android_client_info": {
+          "package_name": "com.tas.beaconzz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822693408322-lku7nj6m61nvq3kpb4ejmn6dudt8pom7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANBAz7lYUPVzlvMvj7x0IKVD4GEUN5_4Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

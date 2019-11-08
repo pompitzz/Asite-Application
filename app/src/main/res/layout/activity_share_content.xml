@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context=".Board.BoardContent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="헌책 나눔 게시판"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:weightSum="1"
+        android:background="#ffffff"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/userimg"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:id="@+id/userName"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="날짜"
+                android:textSize="15dp"
+                android:id="@+id/boardDate"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonstroke"
+                android:layout_margin="5dp"
+                android:layout_weight="0.15">
+
+                <TextView
+                    android:id="@+id/correctionBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_toLeftOf="@+id/deleteBoard"
+                    android:background="@drawable/selector_view"
+                    android:clickable="true"
+                    android:focusable="true"
+
+                    android:gravity="center"
+                    android:text="수정"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/buttonstroke"
+                android:layout_margin="5dp"
+                android:layout_weight="0.15">
+                <TextView
+                    android:id="@+id/deleteBoard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_toLeftOf="@+id/deleteBoard"
+                    android:background="@drawable/selector_view"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="삭제"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제목"
+
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:id="@+id/boardTitle"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="10dp"
+
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.75"
+                    android:layout_height="wrap_content"
+                    android:text="내용"
+                    android:textSize="20dp"
+                    android:id="@+id/boardContent"/>
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:layout_gravity="center"
+                    android:id="@+id/boardImage"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="150dp"
+                    fresco:actualImageScaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    />
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/replyContent"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.9"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/replyButton"
+                    android:layout_marginEnd="0dp"
+                    android:hint="댓글을 입력하세요..."
+                    android:textSize="15dp" />
+
+                <Button
+                    android:id="@+id/replyButton"
+                    android:background="@drawable/send"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"/>
+            </LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/replyListView">
+        </ListView>
+    </LinearLayout>
+</LinearLayout>

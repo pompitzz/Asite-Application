@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="MarchFriday">
+        <item>8일(금요일)</item>
+        <item>15일(금요일)</item>
+        <item>22일(금요일)</item>
+        <item>29일(금요일)</item>
+    </string-array>
+    <string-array name="AprilFriday">
+        <item>5일(금요일)</item>
+        <item>13일(금요일)</item>
+        <item>19일(금요일)</item>
+        <item>26일(금요일)</item>
+    </string-array>
+    <string-array name="MayFriday">
+        <item>3일(금요일)</item>
+        <item>10일(금요일)</item>
+        <item>17일(금요일)</item>
+        <item>24일(금요일)</item>
+        <item>31일(금요일)</item>
+    </string-array>
+    <string-array name="JuneFriday">
+        <item>7일(금요일)</item>
+        <item>14일(금요일)</item>
+        <item>21일(금요일)</item>
+        <item>28일(금요일)</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Capstone</string>
+    <string name="scan_beacon">비콘 불러오기</string>
+    <string name="stop_beacon">불러오기 중단</string>
+    <string name="reset_list">비콘 리셋하기</string>
+    <string name="uuid">UUID</string>
+    <string name="minor">Minor</string>
+    <string name="major">Major</string>
+    <string name="mac">MAC</string>
+    <string name="rssi">RSSI</string>
+    <string name="tx">TX</string>
+    <string name="unique_key">Unique Key</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="from_lib">Choose from library</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

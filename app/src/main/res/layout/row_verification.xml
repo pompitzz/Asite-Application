@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="1"
+    >
+
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_weight="0.85"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의제목"
+            android:id="@+id/courseTitle"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1분반"
+            android:id="@+id/courseDivide"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교수님 이름"
+            android:id="@+id/courseProfessor"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ffffff">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의 시간대"
+            android:id="@+id/courseTime"
+            android:layout_gravity="center"
+            android:padding="1dp"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.15"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="확인"
+            android:textStyle="bold"
+            android:background="@drawable/btn_menu"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            android:id="@+id/deleteButton"
+            android:layout_margin="5dp"
+
+            />
+</LinearLayout>

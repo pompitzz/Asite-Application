@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="major">
+        <item>전공을 선택해주세요.</item>
+        <item>정보통신공학과</item>
+        <item>전자공학과</item>
+        <item>컴퓨터공학과</item>
+        <item>IT</item>
+    </string-array>
+    <string-array name="universityArea">
+        <item>전공필수</item>
+        <item>전공선택</item>
+        <item>학문기초역량</item>
+    </string-array>
+    <string-array name="deleteCourse">
+        <item>시간표 삭제</item>
+    </string-array>
+    <string-array name="Empty">
+        <item> </item>
+    </string-array>
+    <string-array name="universityMajor">
+        <item>정보통신공학과</item>
+        <item>전자공학과</item>
+        <item>컴퓨터공학과</item>
+        <item>IT</item>
+    </string-array>
+    <string-array name="Grade">
+        <item>모든 학년</item>
+        <item>1학년</item>
+        <item>2학년</item>
+        <item>3학년</item>
+        <item>4학년</item>
+    </string-array>
+    <string-array name="Month">
+        <item>월 선택</item>
+        <item>3월</item>
+        <item>4월</item>
+        <item>5월</item>
+        <item>6월</item>
+    </string-array>
+    <string-array name="latetime">
+        <item>지각 시작 시간을 설정 해주세요.</item>
+        <item>수업시작 직후 </item>
+        <item>수업시작 5분 후</item>
+        <item>수업시작 10분 후</item>
+    </string-array>
+</resources>
