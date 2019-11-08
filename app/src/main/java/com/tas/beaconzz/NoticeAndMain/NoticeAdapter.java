@@ -13,12 +13,13 @@ import com.tas.beaconzz.databinding.ItemNewsBinding;
 
 import java.util.List;
 
-public  class NoticeAdapter extends BaseAdapter  {
+public class NoticeAdapter extends BaseAdapter {
     private List<MainActivity.News> mData;
     private ItemNewsBinding mmBinding;
 
     public NoticeAdapter(List<MainActivity.News> data) {
-        mData = data; }
+        mData = data;
+    }
 
     @Override
     public int getCount() {
@@ -38,8 +39,8 @@ public  class NoticeAdapter extends BaseAdapter  {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         MainActivity.ViewHolder holder;
-        if (convertView == null){
-            mmBinding = DataBindingUtil.inflate( LayoutInflater.from(parent.getContext()),
+        if (convertView == null) {
+            mmBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                     R.layout.item_news, parent, false);
 
             convertView = mmBinding.getRoot();
@@ -52,7 +53,7 @@ public  class NoticeAdapter extends BaseAdapter  {
             holder.nameTextView = mmBinding.nameText;
 
             convertView.setTag(holder);
-        }else{
+        } else {
             holder = (MainActivity.ViewHolder) convertView.getTag();
         }
         final MainActivity.News news = (MainActivity.News) getItem(position);
@@ -66,22 +67,22 @@ public  class NoticeAdapter extends BaseAdapter  {
                 intent.setData(Uri.parse(news.link));
                 v.getContext().startActivity(intent);
             }
-        }   );
-        news.description = news.description.replace("&nbsp;;","");
-        news.description = news.description.replace("&middot;","");
-        news.description = news.description.replace("&lsquo;","");
-        news.description = news.description.replace("&lt;","");
-        news.description = news.description.replace("&gt;","");
-        news.description = news.description.replace("&nbsp","");
-        news.description = news.description.replace("&rsquo;","");
-        news.description = news.description.replaceAll("[*]","");
-        news.description = news.description.replaceAll("[;]","");
-        news.description = news.description.replace("&ldquo;","");
-        news.description = news.description.replace("&quot;","");
-        news.description = news.description.replace("&quot","");
-        news.description = news.description.replace("&rdquo;","");
+        });
+        news.description = news.description.replace("&nbsp;;", "");
+        news.description = news.description.replace("&middot;", "");
+        news.description = news.description.replace("&lsquo;", "");
+        news.description = news.description.replace("&lt;", "");
+        news.description = news.description.replace("&gt;", "");
+        news.description = news.description.replace("&nbsp", "");
+        news.description = news.description.replace("&rsquo;", "");
+        news.description = news.description.replaceAll("[*]", "");
+        news.description = news.description.replaceAll("[;]", "");
+        news.description = news.description.replace("&ldquo;", "");
+        news.description = news.description.replace("&quot;", "");
+        news.description = news.description.replace("&quot", "");
+        news.description = news.description.replace("&rdquo;", "");
         news.description = news.description.replaceAll("(\r\n|\r|\n|\n\r)", " ");
-        news.title = news.title.replace("...","");
+        news.title = news.title.replace("...", "");
 
         holder.descriptionView.setText(news.description);
         return convertView;

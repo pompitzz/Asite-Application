@@ -22,8 +22,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
-    private ArrayAdapter adapter;
-    private Spinner spinner;
 
     private AlertDialog dialog;
     private boolean validate = false; //회원아이디 체크 변수
@@ -33,17 +31,21 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        spinner = (Spinner) findViewById(R.id.majorSpinner);
-        adapter = ArrayAdapter.createFromResource(this, R.array.major, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.major, android.R.layout.simple_spinner_dropdown_item);
+        EditText idText = findViewById(R.id.idText);
+        EditText passwordText = findViewById(R.id.passwordText);
+        EditText nameText = findViewById(R.id.nameText);
+        EditText emailText = findViewById(R.id.emailText);
+        Spinner majorSpinner = findViewById(R.id.majorSpinner);
+        Spinner spinner = findViewById(R.id.majorSpinner);
+        Button validateButton = findViewById(R.id.validateButton);
+        Button registerButton = findViewById(R.id.registerButton);
+
         spinner.setAdapter(adapter);
 
-        final EditText idText = (EditText) findViewById(R.id.idText);
-        final EditText passwordText = (EditText) findViewById(R.id.passwordText);
-        final EditText nameText = (EditText) findViewById(R.id.nameText);
-        final EditText emailText = (EditText) findViewById(R.id.emailText);
-        final Spinner majorSpinner = (Spinner) findViewById(R.id.majorSpinner);
-        final Button validateButton = (Button) findViewById(R.id.validateButton);
-
+        /**
+         * 아이디 중복 검사 기능
+         */
         validateButton.setOnClickListener(v -> {
             String userID = idText.getText().toString();
             if (validate) {
@@ -57,11 +59,10 @@ public class RegisterActivity extends AppCompatActivity {
                 dialog.show();
                 return;
             }
-            //중복체크하는것
-            //해당 웹사이트에 접속한 후에 응답을 받는것..
+
             Response.Listener<JSONObject> responseListener = jsonObject -> {
                 try {
-                    boolean success = jsonObject.getBoolean("success");//해당 과정이 정상적으로 수행되었는지에 대한 응답
+                    boolean success = jsonObject.getBoolean("success");
                     if (success) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                         dialog = builder.setMessage("사용할 수 있는 아이디입니다.")
@@ -77,7 +78,6 @@ public class RegisterActivity extends AppCompatActivity {
                         dialog = builder.setMessage("중복된 아이디입니다.")
                                 .setNegativeButton("확인", null)
                                 .create();
-                        System.out.println("테스트1");
                         dialog.show();
                     }
                 } catch (Exception e) {
@@ -85,10 +85,10 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             };
             JSONObject jsonObject = VaildateRequestDto.createJson(userID);
-            RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this); //Request를 실질적으로 보내는 Queue
+            RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
             queue.add(new JsonPostRequest("/student/join/validate", jsonObject, responseListener));
         });
-        Button registerButton = (Button) findViewById(R.id.registerButton);
+
         registerButton.setOnClickListener(v -> {
             String userID = idText.getText().toString();
             String userPassword = passwordText.getText().toString();

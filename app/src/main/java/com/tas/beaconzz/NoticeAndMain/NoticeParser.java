@@ -10,37 +10,44 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class NoticeParser {
+public class NoticeParser {
     public List<MainActivity.News> parse(String xml) throws XmlPullParserException, IOException {
         List<MainActivity.News> newsList = new ArrayList<>();
-        MainActivity.News news =null;
-        boolean isItem  =false;
+        MainActivity.News news = null;
+        boolean isItem = false;
         String text = "";
         XmlPullParser parser = Xml.newPullParser();
         parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
         parser.setInput(new StringReader(xml));
         int eventType = parser.getEventType();
-        while(eventType != XmlPullParser.END_DOCUMENT){
+        while (eventType != XmlPullParser.END_DOCUMENT) {
             String tagName = parser.getName();
-            switch (eventType){
+            switch (eventType) {
                 case XmlPullParser.START_TAG:
-                    if (tagName.equals("item")){
+                    if (tagName.equals("item")) {
                         news = new MainActivity.News();
-                        isItem = true; }
+                        isItem = true;
+                    }
                     break;
                 case XmlPullParser.TEXT:
                     if (isItem) {
-                        text = parser.getText(); }
+                        text = parser.getText();
+                    }
                     break;
                 case XmlPullParser.END_TAG:
-                    if(isItem) {
+                    if (isItem) {
                         if (tagName.equals("item")) {
                             newsList.add(news);
-                            isItem = false; } else if (tagName.equals("author")) {
-                            news.name = text; } else if (tagName.equals("title")) {
-                            news.title = text; } else if (tagName.equals("link")) {
-                            news.link = text; } else if (tagName.equals("description")) {
-                            news.description = text; } else if (tagName.equals("pubDate")) {
+                            isItem = false;
+                        } else if (tagName.equals("author")) {
+                            news.name = text;
+                        } else if (tagName.equals("title")) {
+                            news.title = text;
+                        } else if (tagName.equals("link")) {
+                            news.link = text;
+                        } else if (tagName.equals("description")) {
+                            news.description = text;
+                        } else if (tagName.equals("pubDate")) {
                             news.pubDate = text;
                         }
                     }

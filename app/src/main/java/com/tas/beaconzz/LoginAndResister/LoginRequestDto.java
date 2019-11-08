@@ -5,10 +5,10 @@ import org.json.JSONObject;
 
 class LoginRequestDto {
 
-    static JSONObject createJson(String studentId, String password) {
+    static JSONObject createJson(String studentNumber, String password) {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("studentId", studentId);
+            jsonObject.put("studentNumber", studentNumber);
             jsonObject.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();

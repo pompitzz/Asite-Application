@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 
 public class LoginActivity extends AppCompatActivity {
+
     private AlertDialog dialog;
 
     @Override
@@ -28,34 +29,45 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         TextView registerButton = (TextView) findViewById(R.id.registerButton);
+        EditText idText = (EditText) findViewById(R.id.idText);
+        EditText passwordText = (EditText) findViewById(R.id.passwordText);
+        Button loginButton = (Button) findViewById(R.id.loginButton);
+
+        /**
+         * 회원가입 화면으로 이동
+         */
         registerButton.setOnClickListener(v -> {
             Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
             LoginActivity.this.startActivity(registerIntent);
-
         });
 
 
-        final EditText idText = (EditText) findViewById(R.id.idText);
-        final EditText passwordText = (EditText) findViewById(R.id.passwordText);
-        final Button loginButton = (Button) findViewById(R.id.loginButton);
-
+        /**
+         * 로그인 기능
+         */
         loginButton.setOnClickListener(v -> {
-            final String userID = idText.getText().toString();
-            final String userPassword = passwordText.getText().toString();
 
-            //결과를 받기 위한 것
+            String userID = idText.getText().toString();
+            String userPassword = passwordText.getText().toString();
+
             Response.Listener<JSONObject> responseLister = jsonObject -> {
                 try {
-                    boolean success = jsonObject.getBoolean("success"); // boolean 값으로 성공을 의미하는 값을 지정
+
+                    boolean success = jsonObject.getBoolean("success");
+
                     if (success) {
+                        Long user_Key = jsonObject.getLong("studentId");
+                        String name = jsonObject.getString("name");
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                         builder.setMessage("로그인에 성공했습니다.")
                                 .setPositiveButton("확인", null)
                                 .create()
                                 .show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("userID", userID); // userID 정보보내기 위에 final 붙여야함(전달할때 사용 할 이름, 전달할 값)
-                        intent.putExtra("userPassword", userPassword);
+                        intent.putExtra("userID", userID);
+                        intent.putExtra("studentId", user_Key);
+                        intent.putExtra("name", name);
                         LoginActivity.this.startActivity(intent);
                         finish();
                     } else {
