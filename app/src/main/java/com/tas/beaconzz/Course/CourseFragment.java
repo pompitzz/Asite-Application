@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.tas.beaconzz.MyServer;
 import com.tas.beaconzz.Schedule.GetSchedule;
 import com.tas.beaconzz.NoticeAndMain.MainActivity;
 import com.tas.beaconzz.R;
@@ -31,6 +34,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,6 +104,7 @@ public class CourseFragment extends Fragment  {
     //학부 대학원
     private String courseUniversity = "";
     private String Grade;
+    private int Year, Semester;
     private ListView courseListView; //강의 내역을 파싱하기 위한 것들
     private CourseListAdapter adapter;
     private List<Course> courseList;
@@ -146,6 +151,9 @@ public class CourseFragment extends Fragment  {
         scheduleAdapter = new ScheduleListAdapter(getContext().getApplicationContext(),scheduleList, this);
 
         Grade = "0";
+        LocalDate localDate = LocalDate.now();
+        Year = localDate.getYear();
+        Semester = localDate.getMonthValue() < 8 ? 1 : 2;
         Button searchButton = (Button) getView().findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,11 +230,11 @@ public class CourseFragment extends Fragment  {
         @Override
         protected void onPreExecute() {
             try {
-                target = "http://dm951125.dothome.co.kr/CourseList.php?courseYear="
-                        + URLEncoder.encode("2019", "UTF-8")
-                        + "&courseTerm=" + URLEncoder.encode("1학기", "UTF-8")
-                        + "&courseMajor=" + URLEncoder.encode(majorSpinner.getSelectedItem().toString(), "UTF-8")
-                        + "&courseGrade=" + URLEncoder.encode(Grade, "UTF-8");
+                target = MyServer.url + "?year="
+                        + URLEncoder.encode(String.valueOf(Year), "UTF-8")
+                        + "&semester=" + URLEncoder.encode(String.valueOf(Semester), "UTF-8")
+                        + "&grade=" + URLEncoder.encode(Grade, "UTF-8")
+                        + "&major=" + URLEncoder.encode(majorSpinner.getSelectedItem().toString(), "UTF-8");
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -268,27 +276,24 @@ public class CourseFragment extends Fragment  {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("response");
                 int count = 0;
-                int courseID; int courseYear; int courseCredit; int courseDivide;
-                String courseTerm; String courseArea; String courseMajor; String courseGrade; String courseTitle;
+                int courseID; int courseCredit; int courseDivide;
+                String courseTerm;  String courseGrade; String courseTitle;
                 String courseRoom; String courseProfessor; String courseTime;
                 //현재 배열 원소값을 가져오게 한다.
                 while (count < jsonArray.length())
                 {
                     JSONObject object = jsonArray.getJSONObject(count);
-                    courseID = object.getInt("courseID");
-                    courseYear = object.getInt("courseYear");
-                    courseTerm = object.getString("courseTerm");
-                    courseArea = object.getString("courseArea");
-                    courseMajor = object.getString("courseMajor");
-                    courseGrade = object.getString("courseGrade");
-                    courseTitle = object.getString("courseTitle");
-                    courseCredit = object.getInt("courseCredit");
-                    courseDivide = object.getInt("courseDivide");
-                    courseRoom = object.getString("courseRoom");
-                    courseProfessor = object.getString("courseProfessor");
-                    courseTime = object.getString("courseTime");
+                    courseID = object.getInt("id");
+                    courseTerm = object.getString("semester");
+                    courseGrade = object.getString("grade");
+                    courseTitle = object.getString("title");
+                    courseCredit = object.getInt("credit");
+                    courseDivide = object.getInt("number");
+                    courseRoom = object.getString("location");
+                    courseProfessor = object.getString("professor");
+                    courseTime = object.getString("time");
 
-                    Course course = new Course(courseID, courseYear, courseTerm,  courseArea, courseMajor, courseGrade,  courseTitle, courseCredit, courseDivide,  courseRoom,  courseProfessor,  courseTime);
+                    Course course = new Course(courseID, courseTerm, courseGrade, courseTitle, courseCredit, courseDivide, courseRoom, courseProfessor,courseTime);
                     courseList.add(course);
                     count++;
                 }

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.tas.beaconzz.R;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -85,7 +86,6 @@ public class AttendListAdapter extends BaseAdapter {
     public static String getDateDay(String date, String dateType) throws Exception {
 
         String day = "";
-
         SimpleDateFormat dateFormat = new SimpleDateFormat(dateType);
         Date nDate = dateFormat.parse(date);
 

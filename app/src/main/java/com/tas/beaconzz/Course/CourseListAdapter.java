@@ -82,7 +82,7 @@ public class CourseListAdapter extends BaseAdapter {
         courseCredit.setText(courseList.get(i).getCourseCredit() + "학점");
         courseDivide.setText(courseList.get(i).getCourseDivide() + "분반");
 
-        String GetRoom =courseList.get(i).getcourseRoom();
+        String GetRoom =courseList.get(i).getCourseRoom();
         courseRoom.setText(GetRoom);
 
 
@@ -146,7 +146,7 @@ public class CourseListAdapter extends BaseAdapter {
                             }
                         }
                     };
-                    AddRequest addRequest = new AddRequest(userID, courseList.get(i).getCourseID() + "",courseList.get(i).getCourseTitle() + "",courseList.get(i).getCourseProfessor()+"",courseList.get(i).getCourseTime()+"",courseList.get(i).getCourseDivide()+"",courseList.get(i).getcourseRoom(),responseListener);
+                    AddRequest addRequest = new AddRequest(userID, courseList.get(i).getCourseID() + "",courseList.get(i).getCourseTitle() + "",courseList.get(i).getCourseProfessor()+"",courseList.get(i).getCourseTime()+"",courseList.get(i).getCourseDivide()+"",courseList.get(i).getCourseRoom(),responseListener);
                     RequestQueue queue = Volley.newRequestQueue(parent.getActivity());
                     queue.add(addRequest);
                 }
